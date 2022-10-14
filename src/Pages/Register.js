@@ -9,7 +9,7 @@ function Register({ show, setShow, setShowLogin }) {
     return (
         <>
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header>
+                <Modal.Header closeButton>
                     <Modal.Title className='fs-1 fw-bold'>Register</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>

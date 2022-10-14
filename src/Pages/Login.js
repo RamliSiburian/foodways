@@ -32,12 +32,13 @@ function Login({ show, setShow, setShowRegister }) {
         e.preventDefault()
 
         const DataUser = Users.find((person) => person.email === form.email)
-        console.log(DataUser);
+        // console.log(DataUser);
         if (DataUser) {
             if (form.email === DataUser.email && DataUser.aslogin === "partner" && form.password === DataUser.password) {
                 dispatch({
                     type: "SUCCESS",
                     isLogin: true,
+                    vallogin: "partner",
                     dataName: form
                 });
                 setShow(false);
@@ -48,6 +49,7 @@ function Login({ show, setShow, setShowRegister }) {
                 dispatch({
                     type: "SUCCESS",
                     isLogin: true,
+                    vallogin: "user",
                     dataName: form
                 });
                 setShow(false);
@@ -68,7 +70,7 @@ function Login({ show, setShow, setShowRegister }) {
     return (
         <>
             <Modal show={show} onHide={handleClose} >
-                <Modal.Header>
+                <Modal.Header closeButton>
                     <Modal.Title className='modal-title fs-1 fw-bold'>Login</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -81,6 +83,8 @@ function Login({ show, setShow, setShowRegister }) {
                                 value={form.email}
                                 placeholder='Email'
                                 required='required'
+                                autofocus='autofocus'
+                                autocomplete='off'
                             />
                         </Form.Group>
                         <Form.Group className='mb-3'>

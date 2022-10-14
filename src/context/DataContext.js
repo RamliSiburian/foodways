@@ -4,21 +4,23 @@ export const LoginContext = createContext();
 
 const initialState = {
     isLogin: false,
+    aslogin: "",
     email: "",
     password: ""
 };
 
 const reducer = (_, action) => {
-    const { type, dataName } = action;
+    const { type, dataName, vallogin } = action;
 
     switch (type) {
         case "SUCCESS":
             return {
                 isLogin: true,
+                aslogin: vallogin,
                 email: dataName,
                 password: dataName,
             };
-        case "CLEAR":
+        case "LOGOUT":
             return {
                 isLogin: false,
                 email: "",
