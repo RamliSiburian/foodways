@@ -19,6 +19,7 @@ function Login({ show, setShow, setShowRegister }) {
     const [form, setForm] = useState({
         email: "",
         password: "",
+        aslogin: "",
     });
     const handleOnChange = (e) => {
         setForm({
@@ -32,30 +33,31 @@ function Login({ show, setShow, setShowRegister }) {
         e.preventDefault()
 
         const DataUser = Users.find((person) => person.email === form.email)
-        // console.log(DataUser);
+        // console.log(DataUser.aslogin);
+        // console.log(DataUser.gender);
         if (DataUser) {
             if (form.email === DataUser.email && DataUser.aslogin === "partner" && form.password === DataUser.password) {
                 dispatch({
                     type: "SUCCESS",
-                    isLogin: true,
-                    vallogin: "partner",
+                    isLogin: false,
+                    valLogin: "partner",
                     dataName: form
                 });
+                // console.log(dataLogin);
                 setShow(false);
                 return navigate("/Admin");
-                // console.log(dataLogin);
 
             } else if (form.email === DataUser.email && DataUser.aslogin === "user" && form.password === DataUser.password) {
                 dispatch({
                     type: "SUCCESS",
                     isLogin: true,
-                    vallogin: "user",
+                    valLogin: "user",
                     dataName: form
                 });
-                setShow(false);
-                return navigate("/App")
-
                 // console.log(dataLogin);
+                setShow(false);
+                return navigate("/User")
+
 
             } else {
                 return alert("Email atau Passwor salah!!")
@@ -84,7 +86,7 @@ function Login({ show, setShow, setShowRegister }) {
                                 placeholder='Email'
                                 required='required'
                                 autofocus='autofocus'
-                                autocomplete='off'
+                                 autocomplete='off'
                             />
                         </Form.Group>
                         <Form.Group className='mb-3'>

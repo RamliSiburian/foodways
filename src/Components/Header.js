@@ -6,15 +6,16 @@ import Register from '../Pages/Register';
 import GlobalButton from './Atoms/Global-button';
 import { Link } from 'react-router-dom';
 import { LoginContext } from '../context/DataContext';
+import { CounterContext } from '../context/Data-counter'
 import Image from '../Assets/Image/User/orang.png';
 import * as Icon from "react-icons/fa";
 
-function Header(alertLogout) {
+function Header() {
     const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
-    const [dataLogin, dispatch] = useContext(LoginContext)
+    const [dataLogin, dispatch] = useContext(LoginContext);
+    const [dataCounter, setDataCounter] = useContext(CounterContext);
     // console.log(dataLogin.isLogin);
-
 
     function Logout() {
         dispatch({
@@ -43,18 +44,23 @@ function Header(alertLogout) {
                         {dataLogin.isLogin ? (<Nav className="me-end">
                             {dataLogin.aslogin === "user" ? (
                                 <div className="dropdown">
-                                    <Icon.FaCartArrowDown className='fs-1 me-3' />
-                                    <img src={Image} className="dropdown dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" />
-                                    <ul className="dropdown-menu" style={{ marginLeft: '-100px' }}>
+                                    <Link to="/ChartOrder" className='text-black position-relative me-2'>
+                                        <span class="position-absolute top-0 translate-middle badge rounded-pill bg-danger" style={{ left: "70%" }}>
+                                            {dataCounter.counter.length}
+                                        </span>
+                                        <Icon.FaCartArrowDown className='fs-1 me-3' />
+                                    </Link>
+                                    <img src={Image} alt="Me" className="dropdown dropdown-toggle" data-bs-toggle="dropdown"
+                                    />
+                                    <ul className="dropdown-menu">
                                         <li><Link className="dropdown-item" to="/Profile"><Icon.FaUserAlt className='me-2' /> Profile</Link></li>
                                         <li className='dropdown-item' onClick={() => Logout()} style={{ cursor: "pointer" }} ><Icon.FaSignOutAlt className='me-2' /> Logout</li>
                                     </ul>
                                 </div>
                             ) : (
                                 <div className="dropdown">
-                                    <Icon.FaCartArrowDown className='fs-1 me-3' />
-                                    <img src={Image} className="dropdown dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" />
-                                    <ul className="dropdown-menu" style={{ marginLeft: '-100px' }}>
+                                    <img src={Image} alt="Me" className="dropdown dropdown-toggle" data-bs-toggle="dropdown" />
+                                    <ul className="dropdown-menu">
                                         <li><Link className="dropdown-item" to="/Profile"><Icon.FaUserAlt className='me-2' /> Profile Partner</Link></li>
                                         <li><Link className="dropdown-item" to="/AddProduct"><Icon.FaHamburger className='me-2' /> Add Product</Link> </li>
                                         <li className='dropdown-item' onClick={() => Logout()} style={{ cursor: "pointer" }} ><Icon.FaSignOutAlt className='me-2' /> Logout</li>
@@ -77,6 +83,7 @@ function Header(alertLogout) {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+
             <Login show={showLogin} setShow={setShowLogin} setShowRegister={setShowRegister} />
             <Register show={showRegister} setShow={setShowRegister} setShowLogin={setShowLogin} />
         </>

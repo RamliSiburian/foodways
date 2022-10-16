@@ -4,7 +4,7 @@ import GlobalButton from '../Components/Atoms/Global-button';
 
 function Register({ show, setShow, setShowLogin }) {
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const handleShow = () => setShow(true);
 
     return (
         <>

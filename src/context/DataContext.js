@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 
 export const LoginContext = createContext();
 
@@ -6,17 +6,17 @@ const initialState = {
     isLogin: false,
     aslogin: "",
     email: "",
-    password: ""
+    password: "",
 };
 
 const reducer = (_, action) => {
-    const { type, dataName, vallogin } = action;
+    const { type, dataName, valLogin } = action;
 
     switch (type) {
         case "SUCCESS":
             return {
                 isLogin: true,
-                aslogin: vallogin,
+                aslogin: valLogin,
                 email: dataName,
                 password: dataName,
             };

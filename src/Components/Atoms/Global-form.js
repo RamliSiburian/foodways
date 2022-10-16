@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form } from 'react-bootstrap';
 
-function GlobalForm({ name, onChange, className, type, placeholder, required, autofocus, autocomplete }) {
+function GlobalForm({ name, onChange, className, type, placeholder, required, autofocus, autocomplete, disabled }) {
     return (
         <Form.Control
             name={name}
@@ -12,6 +12,7 @@ function GlobalForm({ name, onChange, className, type, placeholder, required, au
             required={required}
             autoFocus={autofocus}
             autoComplete={autocomplete}
+            disabled={disabled}
         />
     )
 }
