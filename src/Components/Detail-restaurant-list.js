@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button, Card, Container } from 'react-bootstrap';
 import { DetailRestaurant } from '../Data-Dummy/Detail-restaurant';
+import { CounterContext } from '../context/Data-counter';
 
 function DetailRestaurantList() {
+    const [dataCounter, setDataCounter] = useContext(CounterContext);
+
+    function AddUser(item) {
+        let newData = dataCounter.counter;
+        newData.push({ ...item });
+        setDataCounter({
+            type: "ADD",
+            valCounter: newData,
+        })
+        // console.log(dataCounter);
+
+    }
     return (
         <div style={{ backgroundColor: "#e5e5e5" }}>
             <Container>
@@ -21,7 +34,7 @@ function DetailRestaurantList() {
                                         <Card.Text className='text-danger'>
                                             {item.price}
                                         </Card.Text>
-                                        <Button variant="warning" className='w-100'>Add to chart</Button>
+                                        <Button variant="warning" className='w-100' onClick={() => AddUser()}>Add to chart</Button>
                                     </Card.Body>
                                 </Card>
                             </div>

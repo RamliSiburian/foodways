@@ -76,3 +76,13 @@ a {
     overflow: scroll;
     scroll-behavior: smooth;
 }
+
+.income table tr th,
+.income table tr td {
+    padding: 10px;
+    border-bottom: 1px solid #433434 !important;
+}
+
+.btnincome {
+    background-color: red;
+}

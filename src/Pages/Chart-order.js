@@ -1,16 +1,13 @@
 import React, { useContext, useState } from 'react';
 import '../Assets/styles/style.css';
-import { Button, Container } from 'react-bootstrap';
+import { Button, Container, Form } from 'react-bootstrap';
 import ItemImage from '../Assets/Image/Detail-restaurant/geprek.png';
 import * as Icon from 'react-icons/fa';
 import { CounterContext } from '../context/Data-counter';
-import { Chart } from '../context/Charts';
+import GlobalForm from '../Components/Atoms/Global-form';
 
 function ChartOrder() {
     const [dataCounter, setDataCounter] = useContext(CounterContext);
-    console.log(dataCounter.counter.length);
-    // console.log(dataCounter.counter.length);
-    // console.log(dataCounter);
 
     function AddUser(item) {
         let newData = dataCounter.counter;
@@ -19,8 +16,6 @@ function ChartOrder() {
             type: "ADD",
             valCounter: newData,
         })
-        // console.log(dataCounter);
-
     }
 
     function LessUser() {
@@ -32,6 +27,17 @@ function ChartOrder() {
         })
 
     }
+    function LessAll() {
+        let length = dataCounter.counter.length;
+        let newData = dataCounter.counter;
+        newData.splice(0, length);
+        setDataCounter({
+            type: "LESS",
+            valCounter: newData,
+        })
+
+    }
+
 
 
 
@@ -41,75 +47,44 @@ function ChartOrder() {
             <Container >
                 <div className="chart-order">
                     <p className='fw-bold fs-3'>Geprek Bensu</p>
-
                     <hr />
+
                     <p className='fw-bold fs-6 mb-3'>Review Your Order</p>
+                    <div className="delivery-order">
+                        <Form>
+                            <Form.Group className="mb-3 d-md-flex gap-3" controlId="formBasicPassword">
+                                <GlobalForm
+                                    type='text'
+                                    name='location'
+                                    placeholder='Location'
+                                />
+                                <button className="btn text-white mt-3 mt-md-0 d-flex gap-2 justify-content-center align-items-center" style={{ backgroundColor: "#433434" }}>Select on map <Icon.FaMapMarkedAlt /></button>
+                            </Form.Group>
+                        </Form>
+                    </div>
+                    <p className='fw-bold fs-6 mb-3 mt-5'>Review Your Order</p>
                     <div className="chart d-md-flex gap-5">
                         <div className="chart-item w-100">
                             <div className="charts items d-md-flex gap-3 align-items-center">
                                 <div className="image">
                                     <img src={ItemImage} alt="geprek" width="150px" className='rounded' />
                                 </div>
-                                <div className="detail">
-                                    <p>Paket Geprek</p>
-                                    <p>
-                                        <span><Icon.FaMinus onClick={() => LessUser()}></Icon.FaMinus> </span>
-                                        <span> cek </span>
-                                        <span><Icon.FaPlus onClick={() => AddUser()}></Icon.FaPlus> </span>
-                                    </p>
-                                </div>
-                                <div className="temporary-price">
-                                    <p className='text-danger'>Rp 15.000</p>
-                                </div>
-                            </div>
-                            <div className="charts items d-md-flex gap-3 align-items-center">
-                                <div className="image">
-                                    <img src={ItemImage} alt="geprek" width="150px" className='rounded' />
-                                </div>
-                                <div className="detail">
-                                    <p>Paket Geprek</p>
-                                    <p>
-                                        <span><Icon.FaMinus></Icon.FaMinus> </span>
-                                        <span> NumberOfChart </span>
-                                        <span><Icon.FaPlus></Icon.FaPlus> </span>
-                                    </p>
-                                </div>
-                                <div className="temporary-price">
-                                    <p className='text-danger'>Rp 15.000</p>
+                                <div className="detail d-flex justify-content-between w-100 h-100 p-2">
+                                    <div className="d-flex flex-column justify-content-center">
+                                        <p>Paket Geprek</p>
+                                        <p>
+                                            <span><Icon.FaMinus onClick={() => LessUser()}></Icon.FaMinus> </span>
+                                            <span className='ms-2 me-2 fs-5'> {dataCounter.counter.length} </span>
+                                            <span><Icon.FaPlus onClick={() => AddUser()}></Icon.FaPlus> </span>
+                                        </p>
+                                    </div>
+                                    <div className="temporary-price">
+                                        <p className='text-danger'>Rp 15.000</p>
+                                        <Icon.FaTrashAlt onClick={() => LessAll()}></Icon.FaTrashAlt>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="charts items d-md-flex gap-3 align-items-center">
-                                <div className="image">
-                                    <img src={ItemImage} alt="geprek" width="150px" className='rounded' />
-                                </div>
-                                <div className="detail">
-                                    <p>Paket Geprek</p>
-                                    <p>
-                                        <span><Icon.FaMinus></Icon.FaMinus> </span>
-                                        <span> NumberOfChart </span>
-                                        <span><Icon.FaPlus></Icon.FaPlus> </span>
-                                    </p>
-                                </div>
-                                <div className="temporary-price">
-                                    <p className='text-danger'>Rp 15.000</p>
-                                </div>
-                            </div>
-                            <div className="charts items d-md-flex gap-3 align-items-center">
-                                <div className="image">
-                                    <img src={ItemImage} alt="geprek" width="150px" className='rounded' />
-                                </div>
-                                <div className="detail">
-                                    <p>Paket Geprek</p>
-                                    <p>
-                                        <span><Icon.FaMinus></Icon.FaMinus> </span>
-                                        <span> NumberOfChart </span>
-                                        <span><Icon.FaPlus></Icon.FaPlus> </span>
-                                    </p>
-                                </div>
-                                <div className="temporary-price">
-                                    <p className='text-danger'>Rp 15.000</p>
-                                </div>
-                            </div>
+
                         </div>
                         <div className="chart-price w-100">
                             <div className="charts ">
@@ -119,7 +94,7 @@ function ChartOrder() {
                                 </div>
                                 <div className="qty priceses">
                                     <p>Qty</p>
-                                    <p>1</p>
+                                    <p>{dataCounter.counter.length}</p>
                                 </div>
                                 <div className="ongkir priceses">
                                     <p>Ongkir</p>

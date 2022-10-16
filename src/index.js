@@ -17,6 +17,7 @@ import EditProfile from './Pages/Edit-profile';
 import AddProduk from './Pages/Add-produk';
 import ChartOrder from './Pages/Chart-order';
 import { CounterContextProvider } from './context/Data-counter';
+import Incometransaction from './Components/Income-transaction';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -38,6 +39,7 @@ root.render(
               <Route exact path='/EditProfile' element={<EditProfile />} />
               <Route exact path='/AddProduct' element={<AddProduk />} />
               <Route exact path='/ChartOrder' element={<ChartOrder />} />
+              <Route exact path='/IncomeTransaction' element={<Incometransaction />} />
             </Route>
           </Routes>
         </Router>

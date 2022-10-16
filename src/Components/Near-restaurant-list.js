@@ -7,18 +7,9 @@ import Login from '../Pages/Login';
 
 
 export const NearRestaurantList = () => {
-    const [showLogin, setShowLogin] = useState(true);
+    const [showLogin, setShowLogin] = useState(false);
     const [dataLogin, dispatch] = useContext(LoginContext)
 
-    function notLogin() {
-        alert('Anda belum Login. \n\nSilahkan login terlebih dahulu untuk melihat detail Restoran!!!');
-        setShowLogin(true);
-        return (
-            <Login show={showLogin} setShow={setShowLogin()} />
-        )
-
-
-    }
 
     return (
         <div style={{ backgroundColor: "#e5e5e5" }}>
@@ -33,7 +24,7 @@ export const NearRestaurantList = () => {
                             <Card className="near-item mt-3 mt-md-0 shadow" key={key}>
                                 <Card.Img variant="top" src={item.image} />
                                 <Card.Body>
-                                    <Card.Title> {dataLogin.isLogin ? (<Link to="/DetailResto" className="text-black">{item.name}</Link>) : (<Link onClick={() => notLogin()} className="text-black">{item.name}</Link>)} </Card.Title>
+                                    <Card.Title> {dataLogin.isLogin ? (<Link to="/DetailResto" className="text-black">{item.name}</Link>) : (<span style={{ cursor: "pointer" }} onClick={() => setShowLogin(true)} className="text-black">{item.name}</span>)} </Card.Title>
                                     <Card.Text>
                                         {item.range}
                                     </Card.Text>
@@ -43,6 +34,8 @@ export const NearRestaurantList = () => {
                     })}
                 </div>
             </Container>
+            <Login show={showLogin} setShow={setShowLogin} />
+
         </div>
     );
 };
