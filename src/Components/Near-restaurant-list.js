@@ -36,6 +36,7 @@ export const NearRestaurantList = () => {
             </Container>
             <Login show={showLogin} setShow={setShowLogin} />
 
+
         </div>
     );
 };

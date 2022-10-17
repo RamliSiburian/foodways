@@ -41,7 +41,10 @@ function Login({ show, setShow, setShowRegister }) {
                     type: "SUCCESS",
                     isLogin: false,
                     valLogin: "partner",
-                    dataName: form
+                    valemail: form.email,
+                    valpassword: form.password,
+                    valfullname: DataUser.fullname,
+                    valPhone: DataUser.phone,
                 });
                 // console.log(dataLogin);
                 setShow(false);
@@ -52,7 +55,10 @@ function Login({ show, setShow, setShowRegister }) {
                     type: "SUCCESS",
                     isLogin: true,
                     valLogin: "user",
-                    dataName: form
+                    valemail: form.email,
+                    valpassword: form.password,
+                    valfullname: DataUser.fullname,
+                    valPhone: DataUser.phone,
                 });
                 // console.log(dataLogin);
                 setShow(false);
@@ -86,7 +92,7 @@ function Login({ show, setShow, setShowRegister }) {
                                 placeholder='Email'
                                 required='required'
                                 autofocus='autofocus'
-                                 autocomplete='off'
+                                autocomplete='off'
                             />
                         </Form.Group>
                         <Form.Group className='mb-3'>

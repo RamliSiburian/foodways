@@ -8,7 +8,7 @@ export const Users = [
         fullname: 'Ramli',
         aslogin: 'partner',
         gender: 'male',
-        phone: '081x xxxx xxxx',
+        phone: '0811 xxxx xxxx',
         image: Ramli,
     },
     {
@@ -17,7 +17,7 @@ export const Users = [
         fullname: 'Me',
         aslogin: 'user',
         gender: 'male',
-        phone: '081x xxxx xxxx',
+        phone: '0812 xxxx xxxx',
         image: Me,
     },
     {
@@ -26,7 +26,7 @@ export const Users = [
         fullname: 'Me1',
         aslogin: 'user',
         gender: 'female',
-        phone: '081x xxxx xxxx',
+        phone: '0813 xxxx xxxx',
         image: Me,
     },
 ];

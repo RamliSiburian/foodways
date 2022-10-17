@@ -58,9 +58,9 @@ function Header() {
                                     </ul>
                                 </div>
                             ) : (
-                                <div className="dropdown">
+                                <div className="dropdown" >
                                     <img src={Image} alt="Me" className="dropdown dropdown-toggle" data-bs-toggle="dropdown" />
-                                    <ul className="dropdown-menu">
+                                    <ul className="dropdown-menu" style={{ marginLeft: "-50px" }}>
                                         <li><Link className="dropdown-item" to="/Profile"><Icon.FaUserAlt className='me-2' /> Profile Partner</Link></li>
                                         <li><Link className="dropdown-item" to="/AddProduct"><Icon.FaHamburger className='me-2' /> Add Product</Link> </li>
                                         <li className='dropdown-item' onClick={() => Logout()} style={{ cursor: "pointer" }} ><Icon.FaSignOutAlt className='me-2' /> Logout</li>

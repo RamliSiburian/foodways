@@ -4,7 +4,7 @@ export const CounterContext = createContext();
 
 const initialCounter = {
     counter: [],
-};
+}; 
 
 const reducer = (_, action) => {
     const { type, valCounter } = action;

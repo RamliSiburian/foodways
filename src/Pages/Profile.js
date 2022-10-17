@@ -4,13 +4,16 @@ import { Container } from 'react-bootstrap';
 import WaysFood from '../Assets/Image/Icon.png';
 import ProfileImage from '../Assets/Image/User/kucing.jpg';
 import { LoginContext } from '../context/DataContext';
-// import { Users } from '../Data-Dummy/Users';
+import { Users } from '../Data-Dummy/Users';
 import { Link } from 'react-router-dom';
 // console.log(WaysFood);
 
 function Profile() {
     const [dataLogin, dispatch] = useContext(LoginContext);
+
     // const DataUser = Users.find((person) => person.email === dataLogin.email);
+    // console.log(DataUser.fullname);
+
 
     return (
         <>
@@ -26,15 +29,15 @@ function Profile() {
                             <div className="detail">
                                 <div className="name">
                                     <p>Full Name</p>
-                                    <span>Me</span>
+                                    <span>{dataLogin.fullname}</span>
                                 </div>
                                 <div className="email">
                                     <p>Email</p>
-                                    <span>@mail</span>
+                                    <span>{dataLogin.email}</span>
                                 </div>
                                 <div className="phone">
                                     <p>Phone</p>
-                                    <span>08xx</span>
+                                    <span>{dataLogin.phone}</span>
                                 </div>
                             </div>
                         </div>
